@@ -3,9 +3,9 @@ package arrays;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
-class DynamicArrayTest {
+public class DynamicArrayTest {
     private DynamicArray<Integer> dArray;
 
     @Before

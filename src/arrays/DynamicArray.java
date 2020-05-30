@@ -80,7 +80,7 @@ public class DynamicArray<T> {
 
     private void resize(int newCapacity) {
         T[] copy = (T[])new Object[newCapacity];
-        int upperLimit = (newCapacity > capacity()) ? capacity(): newCapacity;
+        int upperLimit = Math.min(newCapacity, capacity());
         for(int i = 0; i < upperLimit; i++) {
             copy[i] = this.array[i];
         }
