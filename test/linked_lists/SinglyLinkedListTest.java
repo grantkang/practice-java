@@ -31,6 +31,17 @@ class SinglyLinkedListTest {
         assertThrows(IndexOutOfBoundsException.class, () -> {
             list.valueAt(-1);
         });
+    }
 
+    @Test
+    public void testPushFront() {
+        list = new SinglyLinkedList<>();
+        for(int i = 4; i >= 0; i--) {
+            list.pushFront(i);
+        }
+        for(int i = 0; i < 5; i++) {
+            assertEquals(i, list.valueAt(i).intValue());
+        }
+        assertEquals(5, list.getSize());
     }
 }
