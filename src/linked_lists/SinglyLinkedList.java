@@ -8,12 +8,12 @@ public class SinglyLinkedList<T> {
 
     public SinglyLinkedList() {
         this.head = null;
-        size = 0;
+        this.size = 0;
     }
 
     public SinglyLinkedList(T value) {
         this.head = new Node<>(value);
-        size = 1;
+        this.size = 1;
     }
 
     public int getSize() {
@@ -25,7 +25,7 @@ public class SinglyLinkedList<T> {
     }
 
     public T valueAt(int index) {
-        rangeCheck(index);
+        if(index >= this.size || index < 0) throw new IndexOutOfBoundsException(String.format("Index: %d, Size: %d", index, this.size));
         Node<T> current = this.head;
         for(int i = 0; i < index; i++) {
             current = current.getNext();
@@ -37,14 +37,14 @@ public class SinglyLinkedList<T> {
         Node<T> toBeAdded = new Node(value);
         toBeAdded.setNext(this.head);
         this.head = toBeAdded;
-        size++;
+        this.size++;
     }
 
     public T popFront() {
         emptyCheck();
         T value = this.head.getValue();
         this.head = this.head.getNext();
-        size--;
+        this.size--;
         return value;
     }
 
@@ -59,7 +59,7 @@ public class SinglyLinkedList<T> {
             }
             current.setNext(toBeAdded);
         }
-        size++;
+        this.size++;
     }
 
     public T popBack() {
@@ -72,7 +72,7 @@ public class SinglyLinkedList<T> {
             current = current.getNext();
         }
         previous.setNext(null);
-        size--;
+        this.size--;
         return current.getValue();
     }
 
@@ -83,20 +83,38 @@ public class SinglyLinkedList<T> {
 
     public T back() {
         emptyCheck();
-        Node<T> current = head;
+        Node<T> current = this.head;
         while(current.getNext() != null) {
             current = current.getNext();
         }
         return current.getValue();
     }
 
-    private void emptyCheck() {
-        if(this.size == 0 || this.head == null) throw new EmptyStackException();
+    public void insert(int index, T value) {
+        if(index > this.size || index < 0) throw new IndexOutOfBoundsException(String.format("Index: %d, Size: %d", index, this.size));
+        Node<T> current = this.head;
+        Node<T> previous = null;
+
+        for(int i = 0; i < index; i++) {
+            previous = current;
+            current = current.getNext();
+        }
+
+        if(this.head == null) {
+            this.head = new Node<>(value);
+        } else if(current == null) {
+            previous.next = new Node<>(value);
+        } else {
+            Node<T> oldNode = new Node<>(current.getValue());
+            oldNode.setNext(current.getNext());
+            current.setValue(value);
+            current.setNext(oldNode);
+        }
+        this.size++;
     }
 
-    private void rangeCheck(int index) {
-        if(index >= this.size || index < 0) throw new IndexOutOfBoundsException(String.format("Index: %d, Size: %d", index, this.size));
-
+    private void emptyCheck() {
+        if(this.size == 0 || this.head == null) throw new EmptyStackException();
     }
 
     private class Node<T> {
