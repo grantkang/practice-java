@@ -133,4 +133,26 @@ class SinglyLinkedListTest {
         assertEquals(5, list.getSize());
 
     }
+
+    @Test
+    public void testErase() {
+        list = new SinglyLinkedList<>();
+
+        list.pushBack(1);
+        list.erase(0);
+        assertEquals(0, list.getSize());
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            list.erase(0);
+        });
+        for(int i = 0; i < 3; i++) {
+            list.pushBack(i);
+        }
+        list.erase(1);
+        assertEquals(2, list.getSize());
+        assertEquals(2, list.valueAt(1).intValue());
+
+        list.erase(1);
+        assertEquals(1, list.getSize());
+        assertEquals(0, list.valueAt(0).intValue());
+    }
 }
