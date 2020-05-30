@@ -76,6 +76,19 @@ public class SinglyLinkedList<T> {
         return current.getValue();
     }
 
+    public T front() {
+        emptyCheck();
+        return head.getValue();
+    }
+
+    public T back() {
+        emptyCheck();
+        Node<T> current = head;
+        while(current.getNext() != null) {
+            current = current.getNext();
+        }
+        return current.getValue();
+    }
 
     private void emptyCheck() {
         if(this.size == 0 || this.head == null) throw new EmptyStackException();
