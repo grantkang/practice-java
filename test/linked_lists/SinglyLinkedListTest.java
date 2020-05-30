@@ -63,6 +63,7 @@ class SinglyLinkedListTest {
 
     @Test
     public void testPushBack() {
+        list = new SinglyLinkedList<>();
         for(int i = 0; i < 5; i++) {
             list.pushBack(i);
         }
@@ -74,6 +75,7 @@ class SinglyLinkedListTest {
 
     @Test
     public void testPopBack() {
+        list = new SinglyLinkedList<>();
         for(int i = 0; i < 5; i++) {
             list.pushBack(i);
         }
