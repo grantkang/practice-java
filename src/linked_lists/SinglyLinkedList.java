@@ -31,6 +31,13 @@ public class SinglyLinkedList<T> {
         return current.getValue();
     }
 
+    public void pushFront(T value) {
+        Node<T> toBeAdded = new Node(value);
+        toBeAdded.setNext(head);
+        this.head = toBeAdded;
+        size++;
+    }
+
     private class Node<T> {
         private T value;
         private Node<T> next;
