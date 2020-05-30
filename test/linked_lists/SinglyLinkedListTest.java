@@ -24,6 +24,6 @@ public class SinglyLinkedListTest {
     @Test
     public void testValueAt() {
         list = new SinglyLinkedList<>(1337);
-        assertEquals(1337, list.valueAt(0));
+        assertEquals(1337, list.valueAt(0).intValue());
     }
 }
