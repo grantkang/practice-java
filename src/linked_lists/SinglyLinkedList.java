@@ -113,6 +113,25 @@ public class SinglyLinkedList<T> {
         this.size++;
     }
 
+    public void erase(int index) {
+        if(index >= this.size || index < 0) throw new IndexOutOfBoundsException(String.format("Index: %d, Size: %d", index, this.size));
+
+        Node<T> current = this.head;
+        Node<T> previous = null;
+        for(int i = 0; i < index; i++) {
+            previous = current;
+            current = current.getNext();
+        }
+        if(this.head.getNext() == null) {
+            this.head = null;
+        } else if(current.getNext() == null) {
+            previous.setNext(null);
+        } else {
+            previous.setNext(current.getNext());
+        }
+        this.size--;
+    }
+
     private void emptyCheck() {
         if(this.size == 0 || this.head == null) throw new EmptyStackException();
     }
