@@ -25,7 +25,7 @@ public class SinglyLinkedList<T> {
     }
 
     public T valueAt(int index) {
-        if(index >= size || index < 0) throw new IndexOutOfBoundsException(String.format("Index: %d, Size: %d", index, size));
+        rangeCheck(index);
         Node<T> current = this.head;
         for(int i = 0; i < index; i++) {
             current = current.getNext();
@@ -93,6 +93,12 @@ public class SinglyLinkedList<T> {
     private void emptyCheck() {
         if(this.size == 0 || this.head == null) throw new EmptyStackException();
     }
+
+    private void rangeCheck(int index) {
+        if(index >= this.size || index < 0) throw new IndexOutOfBoundsException(String.format("Index: %d, Size: %d", index, this.size));
+
+    }
+
     private class Node<T> {
         private T value;
         private Node<T> next;
