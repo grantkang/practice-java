@@ -20,4 +20,10 @@ public class SinglyLinkedListTest {
         assertEquals(1, list.getSize());
         assertFalse(list.isEmpty());
     }
+
+    @Test
+    public void testValueAt() {
+        list = new SinglyLinkedList<>(1337);
+        assertEquals(1337, list.valueAt(0));
+    }
 }
