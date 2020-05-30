@@ -2,6 +2,8 @@ package linked_lists;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.EmptyStackException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class SinglyLinkedListTest {
@@ -54,5 +56,8 @@ class SinglyLinkedListTest {
             assertEquals(i, list.popFront().intValue());
         }
         assertEquals(0, list.getSize());
+        assertThrows(EmptyStackException.class, () -> {
+            list.popFront();
+        });
     }
 }
