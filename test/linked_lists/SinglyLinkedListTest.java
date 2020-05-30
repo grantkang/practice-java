@@ -116,12 +116,21 @@ class SinglyLinkedListTest {
     public void testInsert() {
         list = new SinglyLinkedList<>();
 
-        list.pushBack(0);
+        list.insert(0, 0);
         list.pushBack(2);
         list.insert(1, 1);
         for(int i = 0; i < 3; i++) {
             assertEquals(i, list.valueAt(i).intValue());
         }
         assertEquals(3,list.getSize());
+
+        list.insert(0, 1337);
+        assertEquals(1337, list.front());
+        assertEquals(4, list.getSize());
+
+        list.insert(4, 1337);
+        assertEquals(1337, list.back());
+        assertEquals(5, list.getSize());
+
     }
 }
