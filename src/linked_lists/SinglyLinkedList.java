@@ -22,6 +22,15 @@ public class SinglyLinkedList<T> {
         return this.size == 0 && this.head == null;
     }
 
+    public T valueAt(int index) {
+        if(index >= size || index < 0) throw new IndexOutOfBoundsException(String.format("Index: %d, Size: %d", index, size));
+        Node<T> current = head;
+        for(int i = 0; i < index; i++) {
+            current = current.getNext();
+        }
+        return current.getValue();
+    }
+
     private class Node<T> {
         private T value;
         private Node<T> next;
