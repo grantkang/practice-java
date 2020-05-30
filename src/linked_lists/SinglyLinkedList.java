@@ -7,7 +7,7 @@ public class SinglyLinkedList<T> {
     private int size;
 
     public SinglyLinkedList() {
-        head = null;
+        this.head = null;
         size = 0;
     }
 
@@ -26,7 +26,7 @@ public class SinglyLinkedList<T> {
 
     public T valueAt(int index) {
         if(index >= size || index < 0) throw new IndexOutOfBoundsException(String.format("Index: %d, Size: %d", index, size));
-        Node<T> current = head;
+        Node<T> current = this.head;
         for(int i = 0; i < index; i++) {
             current = current.getNext();
         }
@@ -35,17 +35,35 @@ public class SinglyLinkedList<T> {
 
     public void pushFront(T value) {
         Node<T> toBeAdded = new Node(value);
-        toBeAdded.setNext(head);
+        toBeAdded.setNext(this.head);
         this.head = toBeAdded;
         size++;
     }
 
     public T popFront() {
         if(size == 0 || this.head == null) throw new EmptyStackException();
-        T value = head.getValue();
-        head = head.getNext();
+        T value = this.head.getValue();
+        this.head = this.head.getNext();
         size--;
         return value;
+    }
+
+    public void pushBack(T value) {
+        Node<T> toBeAdded = new Node(value);
+        Node<T> current = this.head;
+        if(current == null) {
+            this.head = toBeAdded;
+        } else {
+            while(current.getNext() != null) {
+                current = current.getNext();
+            }
+            current.setNext(toBeAdded);
+        }
+        size++;
+    }
+
+    public T popBack() {
+        return null;
     }
 
     private class Node<T> {
