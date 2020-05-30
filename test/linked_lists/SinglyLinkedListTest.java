@@ -25,5 +25,12 @@ class SinglyLinkedListTest {
     public void testValueAt() {
         list = new SinglyLinkedList<>(1337);
         assertEquals(1337, list.valueAt(0).intValue());
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            list.valueAt(1);
+        });
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            list.valueAt(-1);
+        });
+
     }
 }
