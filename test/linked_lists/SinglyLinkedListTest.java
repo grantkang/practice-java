@@ -88,4 +88,28 @@ class SinglyLinkedListTest {
         });
     }
 
+    @Test
+    public void testFront() {
+        list = new SinglyLinkedList<>();
+        assertThrows(EmptyStackException.class, () -> {
+            list.front();
+        });
+        for(int i = 0; i < 3; i++) {
+            list.pushBack(i);
+        }
+        assertEquals(0, list.front().intValue());
+    }
+
+    @Test
+    public void testBack() {
+        list = new SinglyLinkedList<>();
+        assertThrows(EmptyStackException.class, () -> {
+            list.back();
+        });
+        for(int i = 0; i < 3; i++) {
+            list.pushBack(i);
+        }
+        assertEquals(2, list.back().intValue());
+    }
+
 }
