@@ -41,7 +41,7 @@ public class SinglyLinkedList<T> {
     }
 
     public T popFront() {
-        if(size == 0 || this.head == null) throw new EmptyStackException();
+        emptyCheck();
         T value = this.head.getValue();
         this.head = this.head.getNext();
         size--;
@@ -63,9 +63,23 @@ public class SinglyLinkedList<T> {
     }
 
     public T popBack() {
-        return null;
+        emptyCheck();
+        Node<T> current = this.head;
+        if(current.getNext() == null) return popFront();
+        Node previous = null;
+        while(current.getNext() != null) {
+            previous = current;
+            current = current.getNext();
+        }
+        previous.setNext(null);
+        size--;
+        return current.getValue();
     }
 
+
+    private void emptyCheck() {
+        if(this.size == 0 || this.head == null) throw new EmptyStackException();
+    }
     private class Node<T> {
         private T value;
         private Node<T> next;
