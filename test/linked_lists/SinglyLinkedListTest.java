@@ -44,4 +44,15 @@ class SinglyLinkedListTest {
         }
         assertEquals(5, list.getSize());
     }
+
+    @Test void testPopFront() {
+        list = new SinglyLinkedList<>();
+        for(int i = 4; i >= 0; i--) {
+            list.pushFront(i);
+        }
+        for(int i = 0; i < 5; i++) {
+            assertEquals(i, list.popFront().intValue());
+        }
+        assertEquals(0, list.getSize());
+    }
 }
