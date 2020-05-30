@@ -1,5 +1,7 @@
 package linked_lists;
 
+import java.util.EmptyStackException;
+
 public class SinglyLinkedList<T> {
     private Node<T> head;
     private int size;
@@ -36,6 +38,14 @@ public class SinglyLinkedList<T> {
         toBeAdded.setNext(head);
         this.head = toBeAdded;
         size++;
+    }
+
+    public T popFront() {
+        if(size == 0 || this.head == null) throw new EmptyStackException();
+        T value = head.getValue();
+        head = head.getNext();
+        size--;
+        return value;
     }
 
     private class Node<T> {
