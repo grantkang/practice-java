@@ -60,4 +60,30 @@ class SinglyLinkedListTest {
             list.popFront();
         });
     }
+
+    @Test
+    public void testPushBack() {
+        for(int i = 0; i < 5; i++) {
+            list.pushBack(i);
+        }
+        for(int i = 0; i < 5; i++) {
+            assertEquals(i, list.valueAt(i).intValue());
+        }
+        assertEquals(5, list.getSize());
+    }
+
+    @Test
+    public void testPopBack() {
+        for(int i = 0; i < 5; i++) {
+            list.pushBack(i);
+        }
+        for(int i = 4; i >= 0; i--) {
+            assertEquals(i, list.popBack().intValue());
+        }
+        assertEquals(0, list.getSize());
+        assertThrows(EmptyStackException.class, () -> {
+            list.popBack();
+        });
+    }
+
 }
