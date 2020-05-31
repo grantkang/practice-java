@@ -155,4 +155,16 @@ class SinglyLinkedListTest {
         assertEquals(1, list.getSize());
         assertEquals(0, list.valueAt(0).intValue());
     }
+
+    @Test
+    public void testValueNthFromEnd() {
+        list = new SinglyLinkedList<>();
+        for(int i = 0; i < 4; i++) {
+            list.pushBack(i);
+        }
+
+        for(int i = 0; i < 4; i++) {
+            assertEquals(3 - i, list.valueNthFromEnd(i));
+        }
+    }
 }
