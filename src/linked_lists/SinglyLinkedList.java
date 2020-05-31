@@ -132,6 +132,12 @@ public class SinglyLinkedList<T> {
         this.size--;
     }
 
+    public T valueNthFromEnd(int nth) {
+        int index = this.size - 1 - nth;
+        if(index >= this.size || index < 0) throw new IndexOutOfBoundsException(String.format("Index: %d, Size: %d", index, this.size));
+        return valueAt(index);
+    }
+
     private void emptyCheck() {
         if(this.size == 0 || this.head == null) throw new EmptyStackException();
     }
