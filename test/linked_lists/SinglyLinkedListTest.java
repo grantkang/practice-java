@@ -154,6 +154,11 @@ class SinglyLinkedListTest {
         list.erase(1);
         assertEquals(1, list.getSize());
         assertEquals(0, list.valueAt(0).intValue());
+
+        list.pushBack(2);
+        list.erase(0);
+        assertEquals(1, list.getSize());
+        assertEquals(2, list.valueAt(0).intValue());
     }
 
     @Test
