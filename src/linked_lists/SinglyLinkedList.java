@@ -138,6 +138,21 @@ public class SinglyLinkedList<T> {
         return valueAt(index);
     }
 
+    public void reverse() {
+        reverseHelper(this.head);
+    }
+
+    private Node<T> reverseHelper(Node<T> current) {
+        if(current.getNext() == null) {
+            this.head.setNext(null);
+            this.head = current;
+        } else {
+            Node<T> next = reverseHelper(current.getNext());
+            next.setNext(current);
+        }
+        return current;
+    }
+
     private void emptyCheck() {
         if(this.size == 0 || this.head == null) throw new EmptyStackException();
     }
