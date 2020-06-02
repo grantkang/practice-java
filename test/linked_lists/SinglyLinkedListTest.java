@@ -181,4 +181,24 @@ class SinglyLinkedListTest {
             assertEquals(3 - i, list.valueAt(i));
         }
     }
+
+    @Test
+    public void testRemoveValue() {
+        list = new SinglyLinkedList<>();
+        for(int i = 0; i < 4; i++) {
+            list.pushBack(i);
+        }
+
+        list.removeValue(1);
+
+        assertEquals(2, list.valueAt(1));
+
+        list.removeValue(0);
+
+        assertEquals(2, list.valueAt(0));
+
+        list.removeValue(3);
+        assertEquals(2, list.valueAt(0));
+        assertEquals(1, list.getSize());
+    }
 }
