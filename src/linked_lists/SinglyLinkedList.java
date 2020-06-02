@@ -153,6 +153,26 @@ public class SinglyLinkedList<T> {
         return current;
     }
 
+    public void removeValue(T value) {
+        Node<T> current = this.head;
+        Node<T> previous = null;
+        while(current != null && current.getValue() != value) {
+            previous = current;
+            current = current.getNext();
+        }
+        if(current == null) return;
+        if(this.head.getNext() == null) {
+            this.head = null;
+        } else if(current.getNext() == null) {
+            previous.setNext(null);
+        } else if(previous == null) {
+            this.head = current.getNext();
+        } else {
+            previous.setNext(current.getNext());
+        }
+        this.size--;
+    }
+
     private void emptyCheck() {
         if(this.size == 0 || this.head == null) throw new EmptyStackException();
     }
