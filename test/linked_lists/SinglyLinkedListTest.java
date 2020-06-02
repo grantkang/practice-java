@@ -167,4 +167,18 @@ class SinglyLinkedListTest {
             assertEquals(3 - i, list.valueNthFromEnd(i));
         }
     }
+
+    @Test
+    public void testReverse() {
+        list = new SinglyLinkedList<>();
+        for(int i = 0; i < 4; i++) {
+            list.pushBack(i);
+        }
+
+        list.reverse();
+
+        for(int i = 0; i < 4; i++) {
+            assertEquals(3 - i, list.valueAt(i));
+        }
+    }
 }
