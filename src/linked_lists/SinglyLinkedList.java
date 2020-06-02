@@ -126,6 +126,8 @@ public class SinglyLinkedList<T> {
             this.head = null;
         } else if(current.getNext() == null) {
             previous.setNext(null);
+        } if(previous == null) {
+            this.head = current.getNext();
         } else {
             previous.setNext(current.getNext());
         }
